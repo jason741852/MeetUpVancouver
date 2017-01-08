@@ -104,9 +104,7 @@ public class MapsActivity extends AppCompatActivity implements GoogleApiClient.C
             Location lastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
 
             double lat = lastLocation.getLatitude(), lon = lastLocation.getLongitude();
-            String units = "imperial";
-            String url = String.format("http://api.openweathermap.org/data/2.5/weather?lat=%f&lon=%f&units=%s&appid=%s",
-                    lat, lon, units, APP_ID);
+
             Toast.makeText(this, String.valueOf(lat), Toast.LENGTH_SHORT).show();
 
 
