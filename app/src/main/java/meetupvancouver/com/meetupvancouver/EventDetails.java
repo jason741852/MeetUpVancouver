@@ -76,8 +76,8 @@ public class EventDetails extends AppCompatActivity implements View.OnClickListe
 
         btnDatePicker=(Button)findViewById(R.id.btn_date);
         btnTimePicker=(Button)findViewById(R.id.btn_time);
-        txtDate=(EditText)findViewById(R.id.in_date);
-        txtTime=(EditText)findViewById(R.id.in_time);
+        txtDate=(EditText)findViewById(R.id.Date);
+        txtTime=(EditText)findViewById(R.id.Time);
 
         btnDatePicker.setOnClickListener(this);
         btnTimePicker.setOnClickListener(this);
