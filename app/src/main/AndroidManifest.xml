@@ -29,7 +29,7 @@
             android:value="AIzaSyAYmj_boBnrtaLJeztYqPJS96s-1eant2M" />
 
         <activity
-            android:name=".FirebaseTest"
+            android:name=".LoginActivity"
             android:label="@string/title_activity_maps">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,7 +41,6 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name="UserAreaActivity" />
         <activity android:name=".EventDetails" />
-        <activity android:name=".LoginActivity"></activity>
     </application>
 
 </manifest>
