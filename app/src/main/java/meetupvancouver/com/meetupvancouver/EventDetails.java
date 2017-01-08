@@ -94,22 +94,21 @@ public class EventDetails extends AppCompatActivity implements View.OnClickListe
         });
 
         submitbutton.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
                 Firebase myFirebaseRef = new Firebase("https://my-project-1483693737987.firebaseio.com/");
 
-                    myFirebaseRef.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            EventCounter = dataSnapshot.child("Events").getChildrenCount();
-                            EventCounter++;
-                            Log.d("Countinsnapshot: ",String.valueOf(EventCounter));
-                        }
+                myFirebaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        EventCounter = dataSnapshot.child("Events").getChildrenCount();
+                        Log.d("Countinsnapshot",String.valueOf(EventCounter));
+                    }
 
-                        @Override
-                        public void onCancelled(FirebaseError firebaseError) {
+                    @Override
+                    public void onCancelled(FirebaseError firebaseError) {
 
-                        }
+                    }
                 });
 
 
@@ -123,6 +122,10 @@ public class EventDetails extends AppCompatActivity implements View.OnClickListe
                 myFirebaseRef.child("Events").child(String.valueOf(EventCounter)).child("EventDescription").setValue(EventDescription.getText().toString());
                 myFirebaseRef.child("Events").child(String.valueOf(EventCounter)).child("Time").setValue(Time.getText().toString());
                 myFirebaseRef.child("Events").child(String.valueOf(EventCounter)).child("Date").setValue(Date.getText().toString());
+
+                Toast.makeText(EventDetails.this,"Submission successful!",Toast.LENGTH_LONG).show();
+                Intent i = new Intent(EventDetails.this, FindEventsMap.class);
+                startActivity(i);
 
                     //DatabaseReference myRef1.setValue("Hello, World!");
 

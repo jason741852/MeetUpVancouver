@@ -11,27 +11,6 @@
     tools:context="meetupvancouver.com.meetupvancouver.EventDetails">
 
 
-    <Button
-        android:text="Save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:layout_marginBottom="15dp"
-        android:id="@+id/button2"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
-
-
-    <Button
-        android:text="Cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:id="@+id/button3"
-        android:layout_alignBaseline="@+id/button2"
-        android:layout_alignBottom="@+id/button2"
-        android:layout_toEndOf="@+id/button2" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,7 +18,6 @@
         android:hint="Event Name"
         android:ems="10"
         android:id="@+id/EventName"
-        android:singleLine="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 
@@ -62,8 +40,7 @@
         android:hint="Time"
         android:layout_below="@+id/HostName"
         android:layout_alignParentStart="true"
-        android:onClick="showTimePickerDialog"
-        android:singleLine="true" />
+        android:onClick="showTimePickerDialog" />
 
 
 
@@ -75,8 +52,7 @@
         android:ems="10"
         android:id="@+id/Location"
         android:layout_below="@+id/Time"
-        android:layout_alignParentStart="true"
-        android:singleLine="true" />
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -86,29 +62,7 @@
         android:hint="Date"
         android:layout_marginTop="42dp"
         android:layout_below="@+id/Time"
-        android:layout_alignParentStart="true"
-        android:singleLine="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/EventDescription"
-        android:hint="Event Description"
-        android:layout_above="@+id/button2"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="64dp" />
-
-    <Button
-        android:text="Add to Calendar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button8"
-        android:onClick="onAddEventClicked"
-        android:layout_alignTop="@+id/EventDescription"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="11dp" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -135,13 +89,49 @@
         android:layout_below="@+id/button8"
         android:layout_alignEnd="@+id/EventDescription" />
 
+    <Button
+        android:text="Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button2"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Add to Calendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button8"
+        android:onClick="onAddEventClicked"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/EventDescription"
+        android:hint="Event Description"
+        android:layout_below="@+id/Date"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="19dp" />
+
     <EditText
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/in_date"
-        android:layout_alignBottom="@+id/Date"
-        android:layout_toEndOf="@+id/button2"
-        android:layout_marginStart="22dp"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginBottom="30dp"
+        android:layout_above="@+id/button2"
+        android:layout_toStartOf="@+id/button8" />
+
+    <Button
+        android:text="Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button3"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/button8"
+        android:layout_marginEnd="13dp" />
 
 </RelativeLayout>
