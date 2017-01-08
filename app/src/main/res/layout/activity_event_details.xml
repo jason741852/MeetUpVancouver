@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Event Name"
+        android:hint="Event Name"
         android:ems="10"
         android:id="@+id/EventName"
         android:layout_alignParentTop="true"
@@ -47,7 +47,7 @@
         android:inputType="textPostalAddress"
         android:ems="10"
         android:id="@+id/Location"
-        android:text="Location"
+        android:hint="Location"
         android:layout_above="@+id/button2"
         android:layout_alignStart="@+id/button2"
         android:layout_marginBottom="58dp" />
@@ -58,7 +58,7 @@
         android:inputType="textMultiLine"
         android:ems="10"
         android:id="@+id/EventDescription"
-        android:text="Event Description"
+        android:hint="Event Description"
         android:layout_below="@+id/EventName"
         android:layout_alignStart="@+id/Date"
         android:layout_marginTop="26dp" />
@@ -67,7 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Host Name"
+        android:hint="Host Name"
         android:ems="10"
         android:id="@+id/HostName"
         android:layout_below="@+id/Time"
@@ -79,7 +79,7 @@
         android:inputType="date"
         android:ems="10"
         android:id="@+id/Date"
-        android:text="Date"
+        android:hint="Date"
         android:layout_below="@+id/EventDescription"
         android:layout_alignStart="@+id/Location"
         android:layout_marginTop="24dp" />
@@ -90,7 +90,7 @@
         android:inputType="time"
         android:ems="10"
         android:id="@+id/Time"
-        android:text="Time"
+        android:hint="Time"
         android:layout_centerVertical="true"
         android:layout_alignStart="@+id/Date" />
 

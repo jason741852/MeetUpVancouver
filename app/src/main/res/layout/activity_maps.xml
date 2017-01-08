@@ -17,33 +17,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <fragment
-        android:id="@+id/map"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        class="com.google.android.gms.maps.SupportMapFragment" />
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/tap_text"
-            android:text="Tap or long press on the map"
+        <fragment
+            android:id="@+id/map"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            class="com.google.android.gms.maps.SupportMapFragment" />
 
-        <TextView
-            android:id="@+id/camera_text"
-            android:text="Move the camera"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
         <Button
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Host Event"
-            android:id="@+id/hostButton"/>
-    </LinearLayout>
+            android:id="@+id/hostButton"
+            android:layout_weight="1"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:text="Home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/home" />
+    </RelativeLayout>
+
 </FrameLayout>

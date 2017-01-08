@@ -28,11 +28,9 @@ public class MapsActivity extends AppCompatActivity
         implements OnMapClickListener, OnMapLongClickListener, OnCameraIdleListener,
         OnMapReadyCallback {
 
-    private TextView mTapTextView;
-    private TextView mCameraTextView;
     private GoogleMap mMap;
     Marker marker;
-    Button hostButton;
+    Button hostButton, home;
     LatLng hostPoint;
 
     @Override
@@ -40,9 +38,8 @@ public class MapsActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        mTapTextView = (TextView) findViewById(R.id.tap_text);
-        mCameraTextView = (TextView) findViewById(R.id.camera_text);
         hostButton = (Button) findViewById(R.id.hostButton);
+        home = (Button) findViewById(R.id.home);
 
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -55,6 +52,14 @@ public class MapsActivity extends AppCompatActivity
                 Log.d("hi","button clicked");
                 Intent i = new Intent(MapsActivity.this, EventDetails.class);
                 i.putExtra("point",hostPoint);
+                startActivity(i);
+            }
+        });
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MapsActivity.this,UserAreaActivity.class);
                 startActivity(i);
             }
         });
@@ -73,7 +78,6 @@ public class MapsActivity extends AppCompatActivity
     @Override
     public void onMapClick(LatLng point) {
 
-        mTapTextView.setText("tapped, point=" + point);
         if (marker != null) {
             marker.remove();
         }
@@ -84,7 +88,6 @@ public class MapsActivity extends AppCompatActivity
     @Override
     public void onMapLongClick(LatLng point) {
 
-        mTapTextView.setText("long pressed, point=" + point);
         if (marker != null) {
             marker.remove();
         }
@@ -95,6 +98,5 @@ public class MapsActivity extends AppCompatActivity
 
     @Override
     public void onCameraIdle() {
-        mCameraTextView.setText(mMap.getCameraPosition().toString());
     }
 }

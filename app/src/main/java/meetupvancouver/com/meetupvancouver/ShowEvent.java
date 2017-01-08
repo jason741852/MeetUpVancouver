@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class ShowEvent extends AppCompatActivity {
 
     TextView eventView, dateView, descView, hostView, timeView;
+    Button homeButton;
 
 
     @Override
@@ -37,6 +40,17 @@ public class ShowEvent extends AppCompatActivity {
         descView.setText(infoTokens[2]);
         hostView.setText(infoTokens[3]);
         timeView.setText(infoTokens[4]);
+
+
+        homeButton = (Button) findViewById(R.id.homeButton);
+
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ShowEvent.this,UserAreaActivity.class);
+                startActivity(i);
+            }
+        });
 
 
 
