@@ -1,33 +1,39 @@
 {
   "project_info": {
-    "project_number": "728888321851",
-    "project_id": "my-project-1483684023012"
+    "project_number": "494330823077",
+    "firebase_url": "https://my-project-1483693737987.firebaseio.com",
+    "project_id": "my-project-1483693737987",
+    "storage_bucket": "my-project-1483693737987.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:728888321851:android:be7e6bbae65e684c",
+        "mobilesdk_app_id": "1:494330823077:android:be7e6bbae65e684c",
         "android_client_info": {
           "package_name": "meetupvancouver.com.meetupvancouver"
         }
       },
       "oauth_client": [
         {
-          "client_id": "728888321851-bm2744tg30fp6rsc4sqrq345lujf1su5.apps.googleusercontent.com",
+          "client_id": "494330823077-u4mhdif7eab801qdu3dqaepf0h36qb8j.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "meetupvancouver.com.meetupvancouver",
-            "certificate_hash": "249AD7B0241F59FCE9A3720BD5AE3041EE927120"
+            "certificate_hash": "63C9F56745E6FFD7FB9B2B522FB5A15F6F68B735"
           }
         },
         {
-          "client_id": "728888321851-edlb9fbosq8r5ahuqjlrucokrhs8mc2s.apps.googleusercontent.com",
+          "client_id": "494330823077-1rd49195t7vji8e6shc06jrnp8vgig8u.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "494330823077-phth7rv268hqrp105sqq4hvflhrmsbjt.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBjuaENNT9JHq5CWy9VoGG5ztKG7EUJgI0"
+          "current_key": "AIzaSyAB1nAld9VV-XExo_mTQAJT6SA2l9RXZlc"
         }
       ],
       "services": {
@@ -39,7 +45,7 @@
           "other_platform_oauth_client": []
         },
         "ads_service": {
-          "status": 1
+          "status": 2
         }
       }
     }

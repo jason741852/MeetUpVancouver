@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.content.Intent;
 import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
@@ -16,6 +17,7 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 import com.google.api.client.util.DateTime;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -36,13 +38,15 @@ import java.util.GregorianCalendar;
 public class EventDetails extends AppCompatActivity implements View.OnClickListener{
 
 	Button submitbutton;
+    Button cancelbutton;
 	EditText EventName;
 	EditText HostName;
     EditText Location;
     EditText EventDescription;
     EditText Time;
     EditText Date;
-    long EventCounter;
+    LatLng location;
+    Long EventCounter = 0L;
 
     Button btnDatePicker, btnTimePicker;
     EditText txtDate, txtTime;
@@ -67,6 +71,9 @@ public class EventDetails extends AppCompatActivity implements View.OnClickListe
         Time = (EditText) findViewById(R.id.Time);
         Date = (EditText) findViewById(R.id.Date);
         submitbutton = (Button) findViewById(R.id.button2);
+        cancelbutton = (Button) findViewById(R.id.button3) ;
+        Intent intent = getIntent();
+        location = intent.getParcelableExtra("point");
 
         btnDatePicker=(Button)findViewById(R.id.btn_date);
         btnTimePicker=(Button)findViewById(R.id.btn_time);
@@ -77,6 +84,14 @@ public class EventDetails extends AppCompatActivity implements View.OnClickListe
         btnTimePicker.setOnClickListener(this);
 
         Firebase.setAndroidContext(this);
+
+        cancelbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(EventDetails.this, MapsActivity.class);
+                startActivity(i);
+            }
+        });
 
         submitbutton.setOnClickListener(new View.OnClickListener() {
 				@Override
@@ -100,9 +115,11 @@ public class EventDetails extends AppCompatActivity implements View.OnClickListe
 
 
                     Log.d("Count: ",String.valueOf(EventCounter));
-				myFirebaseRef.child("Events").child(String.valueOf(EventCounter)).child("EventID").setValue(EventName.getText().toString());
+				myFirebaseRef.child("Events").child(String.valueOf(EventCounter)).child("EventID").setValue(String.valueOf(EventCounter));
 				myFirebaseRef.child("Events").child(String.valueOf(EventCounter)).child("HostName").setValue(HostName.getText().toString());
-                myFirebaseRef.child("Events").child(String.valueOf(EventCounter)).child("Location").setValue(Location.getText().toString());
+                myFirebaseRef.child("Events").child(String.valueOf(EventCounter)).child("EventName").setValue(EventName.getText().toString());
+                myFirebaseRef.child("Events").child(String.valueOf(EventCounter)).child("LocationLat").setValue(String.valueOf(location.latitude));
+                myFirebaseRef.child("Events").child(String.valueOf(EventCounter)).child("LocationLon").setValue(String.valueOf(location.longitude));
                 myFirebaseRef.child("Events").child(String.valueOf(EventCounter)).child("EventDescription").setValue(EventDescription.getText().toString());
                 myFirebaseRef.child("Events").child(String.valueOf(EventCounter)).child("Time").setValue(Time.getText().toString());
                 myFirebaseRef.child("Events").child(String.valueOf(EventCounter)).child("Date").setValue(Date.getText().toString());
