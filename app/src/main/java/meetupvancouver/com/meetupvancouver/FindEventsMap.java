@@ -76,7 +76,7 @@ public class FindEventsMap extends AppCompatActivity implements OnMapReadyCallba
     @Override
     public void onMapReady(final GoogleMap map) {
         mMap = map;
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(49.234221, -123.0145), 10));
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(49.234221, -122.8145), 9));
 
 
 
@@ -129,6 +129,7 @@ public class FindEventsMap extends AppCompatActivity implements OnMapReadyCallba
                     public boolean onMarkerClick(Marker marker) {
                         Intent i = new Intent(FindEventsMap.this, ShowEvent.class);
                         i.putExtra("info",marker.getTitle());
+                        startActivity(i);
 
                         return false;
                     }

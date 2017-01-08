@@ -26,6 +26,6 @@ public class Event {
         return EventID;
     }
 
-    public String toString() { return "User{EventName='"+EventName+"', Date='"+Date+"', EventDescription="+EventDescription+", HostName='"+HostName+"', Time='"+Time+"'/'}"; }
+    public String toString() { return EventName+"$"+Date+"$"+EventDescription+"$"+HostName+"$"+Time+"$";}
 
     }
