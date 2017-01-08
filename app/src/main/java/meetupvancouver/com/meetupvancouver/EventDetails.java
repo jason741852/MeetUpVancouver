@@ -21,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class EventDetails extends AppCompatActivity {
 
 	Button submitbutton;
+    Button cancelbutton;
 	EditText EventName;
 	EditText HostName;
     EditText Location;
@@ -28,7 +29,7 @@ public class EventDetails extends AppCompatActivity {
     EditText Time;
     EditText Date;
     LatLng location;
-    long EventCounter;
+    Long EventCounter = 0L;
 
     private static final String TAG = meetupvancouver.com.meetupvancouver.EventDetails.class.getSimpleName();
     Firebase firebaseReference;
@@ -49,11 +50,20 @@ public class EventDetails extends AppCompatActivity {
         Time = (EditText) findViewById(R.id.Time);
         Date = (EditText) findViewById(R.id.Date);
         submitbutton = (Button) findViewById(R.id.button2);
+        cancelbutton = (Button) findViewById(R.id.button3) ;
         Intent intent = getIntent();
         location = intent.getParcelableExtra("point");
 
 
         Firebase.setAndroidContext(this);
+
+        cancelbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(EventDetails.this, MapsActivity.class);
+                startActivity(i);
+            }
+        });
 
         submitbutton.setOnClickListener(new View.OnClickListener() {
 				@Override
@@ -77,8 +87,9 @@ public class EventDetails extends AppCompatActivity {
 
 
                     Log.d("Count: ",String.valueOf(EventCounter));
-				myFirebaseRef.child("Events").child(String.valueOf(EventCounter)).child("EventID").setValue(EventName.getText().toString());
+				myFirebaseRef.child("Events").child(String.valueOf(EventCounter)).child("EventID").setValue(String.valueOf(EventCounter));
 				myFirebaseRef.child("Events").child(String.valueOf(EventCounter)).child("HostName").setValue(HostName.getText().toString());
+                myFirebaseRef.child("Events").child(String.valueOf(EventCounter)).child("EventName").setValue(EventName.getText().toString());
                 myFirebaseRef.child("Events").child(String.valueOf(EventCounter)).child("LocationLat").setValue(String.valueOf(location.latitude));
                 myFirebaseRef.child("Events").child(String.valueOf(EventCounter)).child("LocationLon").setValue(String.valueOf(location.longitude));
                 myFirebaseRef.child("Events").child(String.valueOf(EventCounter)).child("EventDescription").setValue(EventDescription.getText().toString());
