@@ -74,8 +74,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             // If the user's cached credentials are valid, the OptionalPendingResult will be "done"
             // and the GoogleSignInResult will be available instantly.
             Log.d(TAG, "Got cached sign-in");
-            GoogleSignInResult result = opr.get();
-            handleSignInResult(result);
+            Intent i = new Intent(LoginActivity.this, UserAreaActivity.class);
+            startActivity(i);
         } else {
             // If the user has not previously signed in on this device or the sign-in has expired,
             // this asynchronous branch will attempt to sign in the user silently.  Cross-device
@@ -194,15 +194,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()) {
             case R.id.sign_in_button:
                 signIn();
-                Intent i = new Intent(LoginActivity.this, UserAreaActivity.class);
-                startActivity(i);
                 break;
             case R.id.sign_out_button:
                 signOut();
                 break;
             case R.id.create_event_button:
                 // User CalendarActivity to test if the event is added to personal calendar
-                Intent event = new Intent(LoginActivity.this, EventDetails.class);
+                Intent event = new Intent(LoginActivity.this, UserAreaActivity.class);
                 startActivity(event);
                 break;
         }
