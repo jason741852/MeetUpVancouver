@@ -66,7 +66,6 @@ public class EventDetails extends AppCompatActivity implements View.OnClickListe
 
         EventName = (EditText) findViewById(R.id.EventName);
         HostName = (EditText) findViewById(R.id.HostName);
-        Location = (EditText) findViewById(R.id.Location);
         EventDescription = (EditText) findViewById(R.id.EventDescription);
         Time = (EditText) findViewById(R.id.Time);
         Date = (EditText) findViewById(R.id.Date);
@@ -124,8 +123,7 @@ public class EventDetails extends AppCompatActivity implements View.OnClickListe
                 myFirebaseRef.child("Events").child(String.valueOf(EventCounter)).child("Date").setValue(Date.getText().toString());
 
                 Toast.makeText(EventDetails.this,"Submission successful!",Toast.LENGTH_LONG).show();
-                Intent i = new Intent(EventDetails.this, FindEventsMap.class);
-                startActivity(i);
+                
 
                     //DatabaseReference myRef1.setValue("Hello, World!");
 
