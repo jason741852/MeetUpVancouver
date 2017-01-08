@@ -199,7 +199,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 signOut();
                 break;
             case R.id.create_event_button:
-                Intent event = new Intent(LoginActivity.this, EventDetails.class);
+                Intent event = new Intent(LoginActivity.this, CalendarActivity.class);
                 startActivity(event);
                 break;
         }
