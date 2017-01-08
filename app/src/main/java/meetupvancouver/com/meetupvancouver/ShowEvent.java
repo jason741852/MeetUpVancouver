@@ -1,6 +1,7 @@
 package meetupvancouver.com.meetupvancouver;
 
 import android.content.Intent;
+import android.provider.CalendarContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -52,13 +53,20 @@ public class ShowEvent extends AppCompatActivity {
             }
         });
 
+    }
+    public void onAddEventClicked(View view){
+        Intent intent = new Intent(Intent.ACTION_INSERT);
+        intent.setType("vnd.android.cursor.item/event");
+
+//        intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startTime);
+//        intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,endTime);
+//        intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
+
+        intent.putExtra(CalendarContract.Events.TITLE, eventView.getText().toString());
+        intent.putExtra(CalendarContract.Events.DESCRIPTION,  descView.getText().toString());
+//        intent.putExtra(CalendarContract.Events.EVENT_LOCATION, Location.getText().toString());
 
 
-
-
-
-
-
-
+        startActivity(intent);
     }
 }

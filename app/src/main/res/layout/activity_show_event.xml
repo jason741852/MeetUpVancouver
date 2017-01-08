@@ -97,9 +97,19 @@
         android:text="Home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:id="@+id/homeButton"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/homeButton" />
+        android:layout_marginBottom="72dp" />
+
+    <Button
+        android:text="Add to Calendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/addbutton"
+        android:onClick="onAddEventClicked"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>
