@@ -38,7 +38,7 @@ public class MapsActivity extends AppCompatActivity implements GoogleApiClient.C
     private double lati = 49.2488,longi = 122.98;
 
 
-    private GoogleMap mMap;
+    GoogleMap mMap;
 
     private GoogleApiClient mGoogleApiClient;
 
@@ -55,14 +55,12 @@ public class MapsActivity extends AppCompatActivity implements GoogleApiClient.C
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
-//            ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.ACCESS_COARSE_LOCATION },
-//                    PERMISSION_ACCESS_COARSE_LOCATION);
+            ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.ACCESS_COARSE_LOCATION },
+                    2000);
 
-            Toast.makeText(this,"need permissions!",Toast.LENGTH_LONG).show();
         }
 
-        latView = (TextView)findViewById(R.id.latView);
-        longView = (TextView)findViewById(R.id.longView);
+
 
 
 
@@ -86,31 +84,38 @@ public class MapsActivity extends AppCompatActivity implements GoogleApiClient.C
 
 
 
-
+//
 //    public void onMapReady(GoogleMap googleMap) {
 //        mMap = googleMap;
 //
 //        // Add a marker in Paris and move the camera
 //        LatLng paris = new LatLng(lati, longi);
 //        mMap.addMarker(new MarkerOptions().position(paris).title("You are here"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(paris));
-//    }
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(paris));}
 
     @Override
     public void onConnected(Bundle bundle) {
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
-            Location lastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+            Location lastLocation = LocationServices.FusedLocation/Api.getLastLocation(mGoogleApiClient);
 
             double lat = lastLocation.getLatitude(), lon = lastLocation.getLongitude();
 
+
+            latView = (TextView)findViewById(R.id.latView);
+            longView = (TextView)findViewById(R.id.longView);
+
+            latView.setText(String.valueOf(lat));
+            longView.setText(String.valueOf(lon));
             Toast.makeText(this, String.valueOf(lat), Toast.LENGTH_SHORT).show();
 
 
+
+
             LatLng mLoc = new LatLng(lat,lon);
-            mMap.addMarker(new MarkerOptions().position(mLoc).title("You are here"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(mLoc));
+//            mMap.addMarker(new MarkerOptions().position(mLoc).title("You are here"));
+//            mMap.moveCamera(CameraUpdateFactory.newLatLng(mLoc));
 
 
 
