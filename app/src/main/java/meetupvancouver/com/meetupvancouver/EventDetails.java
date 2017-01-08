@@ -15,13 +15,25 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.google.api.client.util.DateTime;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import android.view.Menu;
+import android.view.MenuItem;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
+import android.widget.TimePicker;
+import android.widget.DatePicker;
+import java.lang.Object.*;
+import java.util.Date;
 
-public class EventDetails extends AppCompatActivity {
+import java.util.GregorianCalendar;
+
+public class EventDetails extends AppCompatActivity implements View.OnClickListener{
 
 	Button submitbutton;
 	EditText EventName;
@@ -31,6 +43,10 @@ public class EventDetails extends AppCompatActivity {
     EditText Time;
     EditText Date;
     long EventCounter;
+
+    Button btnDatePicker, btnTimePicker;
+    EditText txtDate, txtTime;
+    private int mYear, mMonth, mDay, mHour, mMinute;
 
     private static final String TAG = meetupvancouver.com.meetupvancouver.EventDetails.class.getSimpleName();
     Firebase firebaseReference;
@@ -51,6 +67,14 @@ public class EventDetails extends AppCompatActivity {
         Time = (EditText) findViewById(R.id.Time);
         Date = (EditText) findViewById(R.id.Date);
         submitbutton = (Button) findViewById(R.id.button2);
+
+        btnDatePicker=(Button)findViewById(R.id.btn_date);
+        btnTimePicker=(Button)findViewById(R.id.btn_time);
+        txtDate=(EditText)findViewById(R.id.in_date);
+        txtTime=(EditText)findViewById(R.id.in_time);
+
+        btnDatePicker.setOnClickListener(this);
+        btnTimePicker.setOnClickListener(this);
 
         Firebase.setAndroidContext(this);
 
@@ -112,7 +136,7 @@ public class EventDetails extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_INSERT);
         intent.setType("vnd.android.cursor.item/event");
 
-        Calendar cal = Calendar.getInstance();
+//        Calendar cal = Calendar.getInstance();
 //        long startTime = cal.getTimeInMillis();
 //        long endTime = cal.getTimeInMillis()  + 60 * 60 * 1000;
 //
@@ -123,8 +147,71 @@ public class EventDetails extends AppCompatActivity {
         intent.putExtra(CalendarContract.Events.TITLE, EventName.getText().toString());
         intent.putExtra(CalendarContract.Events.DESCRIPTION,  EventDescription.getText().toString());
         intent.putExtra(CalendarContract.Events.EVENT_LOCATION, Location.getText().toString());
+
+
+//        Calendar c = Calendar.getInstance();
+//        c.set(Calendar.YEAR, mYear);
+//        c.set(Calendar.MONTH, mMonth);
+//        c.set(Calendar.MINUTE, mMinute);
+//        c.set(Calendar.HOUR_OF_DAY, mHour);
+//        c.set(Calendar.MINUTE, mMinute);
+//        c.getTimeInMillis();
+//        Log.d("MYINT", "value: " + c.getTimeInMillis());
+
 //        intent.putExtra(CalendarContract.Events.RRULE, "FREQ=YEARLY");
 
         startActivity(intent);
+    }
+
+    public void onClick(View v) {
+
+        if (v == btnDatePicker) {
+
+            // Get Current Date
+            final Calendar c = Calendar.getInstance();
+            mYear = c.get(Calendar.YEAR);
+            mMonth = c.get(Calendar.MONTH);
+            mDay = c.get(Calendar.DAY_OF_MONTH);
+
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                    new DatePickerDialog.OnDateSetListener() {
+
+                        @Override
+                        public void onDateSet(DatePicker view, int year,
+                                              int monthOfYear, int dayOfMonth) {
+
+                            txtDate.setText((monthOfYear + 1)+"-"+dayOfMonth + "-" + year + "");
+
+                        }
+                    }, mYear, mMonth, mDay);
+            datePickerDialog.show();
+        }
+        if (v == btnTimePicker) {
+
+            // Get Current Time
+            final Calendar c = Calendar.getInstance();
+            mHour = c.get(Calendar.HOUR_OF_DAY);
+            mMinute = c.get(Calendar.MINUTE);
+
+            // Launch Time Picker Dialog
+            TimePickerDialog timePickerDialog = new TimePickerDialog(this,
+                    new TimePickerDialog.OnTimeSetListener() {
+
+                        @Override
+                        public void onTimeSet(TimePicker view, int hourOfDay,
+                                              int minute) {
+                            if(minute<10){
+                                txtTime.setText(hourOfDay + ":0" + minute + "");
+                            }
+                            else{
+                                txtTime.setText(hourOfDay + ":" + minute + "");
+                            }
+
+
+                        }
+                    }, mHour, mMinute, false);
+            timePickerDialog.show();
+        }
     }
 }
