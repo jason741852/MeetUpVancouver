@@ -9,15 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="meetupvancouver.com.meetupvancouver.EventDetails">
-    <TextView
-        android:id="@+id/title_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="@string/title_text"
-        android:gravity="center"
-        android:textColor="@android:color/black"
-        android:textSize="36sp" />
+
 
     <Button
         android:text="Save"
@@ -28,6 +20,7 @@
         android:id="@+id/button2"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
+
 
     <Button
         android:text="Cancel"
@@ -43,55 +36,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Event Name"
+        android:hint="Event Name"
         android:ems="10"
         android:id="@+id/EventName"
+        android:singleLine="true"
         android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/button3"
-        android:layout_marginTop="14dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPostalAddress"
-        android:ems="10"
-        android:id="@+id/Location"
-        android:text="Location"
-        android:layout_above="@+id/button2"
-        android:layout_alignStart="@+id/button2"
-        android:layout_marginBottom="58dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/EventDescription"
-        android:text="Event Description"
-        android:layout_below="@+id/EventName"
-        android:layout_alignStart="@+id/Date"
-        android:layout_marginTop="26dp" />
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Host Name"
+        android:hint="Host Name"
         android:ems="10"
         android:id="@+id/HostName"
-        android:layout_below="@+id/Time"
-        android:layout_alignEnd="@+id/button3" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="date"
-        android:ems="10"
-        android:id="@+id/Date"
-        android:text="Date"
-        android:layout_below="@+id/EventDescription"
-        android:layout_alignStart="@+id/Location"
-        android:layout_marginTop="24dp" />
+        android:layout_below="@+id/EventName"
+        android:layout_alignParentStart="true"
+        android:singleLine="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -99,9 +60,55 @@
         android:inputType="time"
         android:ems="10"
         android:id="@+id/Time"
-        android:text="Time"
-        android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/Date" />
+        android:hint="Time"
+        android:layout_below="@+id/HostName"
+        android:layout_alignParentStart="true"
+        android:onClick="showTimePickerDialog"
+        android:singleLine="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPostalAddress"
+        android:ems="10"
+        android:id="@+id/Location"
+        android:hint="Location"
+        android:layout_below="@+id/Time"
+        android:layout_alignParentStart="true"
+        android:singleLine="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/Date"
+        android:hint="Date"
+        android:layout_marginTop="42dp"
+        android:layout_below="@+id/Time"
+        android:layout_alignParentStart="true"
+        android:singleLine="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/EventDescription"
+        android:hint="Event Description"
+        android:layout_above="@+id/button2"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="64dp" />
+
+    <Button
+        android:text="Add to Calendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button8"
+        android:onClick="onAddEventClicked"
+        android:layout_alignTop="@+id/EventDescription"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="11dp" />
 
 
 </RelativeLayout>

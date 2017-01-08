@@ -61,7 +61,7 @@ public class CalendarActivity extends Activity
 
     private static final String BUTTON_TEXT = "Call Google Calendar API";
     private static final String PREF_ACCOUNT_NAME = "accountName";
-    private static final String[] SCOPES = { CalendarScopes.CALENDAR_READONLY };
+    private static final String[] SCOPES = { CalendarScopes.CALENDAR};
 
     /**
      * Create the main activity.
@@ -213,10 +213,12 @@ public class CalendarActivity extends Activity
                 break;
             case REQUEST_AUTHORIZATION:
                 if (resultCode == RESULT_OK) {
+//                    createEvent(mCredential);
                     getResultsFromApi();
                 }
                 break;
         }
+//        createEvent(mCredential);
     }
 
     /**
@@ -415,5 +417,66 @@ public class CalendarActivity extends Activity
                 mOutputText.setText("Request cancelled.");
             }
         }
+
+
+
+
+    }
+    public void createEvent(GoogleAccountCredential mCredential) {
+//        String EventName = new EventDetails().EventName.getText().toString();
+//        String Location = new EventDetails().Location.getText().toString();
+//        String EventDescription = new EventDetails().EventDescription.getText().toString();
+
+        HttpTransport transport = AndroidHttp.newCompatibleTransport();
+        JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
+        com.google.api.services.calendar.Calendar service = new com.google.api.services.calendar.Calendar.Builder(
+                transport, jsonFactory, mCredential)
+                .setApplicationName("R_D_Location Callendar")
+                .build();
+
+        Event event = new Event()
+                .setSummary("Event- April 2016")
+                .setLocation("Dhaka")
+                .setDescription("New Event 1");
+
+
+//        DateTime startDateTime = new DateTime("2016-04-17T18:10:00+06:00");
+//        EventDateTime start = new EventDateTime()
+//                .setDateTime(startDateTime)
+//                .setTimeZone("Asia/Dhaka");
+//        event.setStart(start);
+//
+//        DateTime endDateTime = new DateTime("2016-04-17T18:40:00+06:00");
+//        EventDateTime end = new EventDateTime()
+//                .setDateTime(endDateTime)
+//                .setTimeZone("Asia/Dhaka");
+//        event.setEnd(end);
+//
+//        String[] recurrence = new String[]{"RRULE:FREQ=DAILY;COUNT=2"};
+//        event.setRecurrence(Arrays.asList(recurrence));
+//
+//        EventAttendee[] attendees = new EventAttendee[]{
+//                new EventAttendee().setEmail("abir@aksdj.com"),
+//                new EventAttendee().setEmail("asdasd@andlk.com"),
+//        };
+//        event.setAttendees(Arrays.asList(attendees));
+//
+//        EventReminder[] reminderOverrides = new EventReminder[]{
+//                new EventReminder().setMethod("email").setMinutes(24 * 60),
+//                new EventReminder().setMethod("popup").setMinutes(10),
+//        };
+//        Event.Reminders reminders = new Event.Reminders()
+//                .setUseDefault(false)
+//                .setOverrides(Arrays.asList(reminderOverrides));
+//        event.setReminders(reminders);
+
+        String calendarId = "primary";
+        try {
+            event = service.events().insert(calendarId, event).execute();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.printf("Event created: %s\n", event.getHtmlLink());
+
     }
 }

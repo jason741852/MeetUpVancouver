@@ -32,6 +32,7 @@
             android:value="AIzaSyAYmj_boBnrtaLJeztYqPJS96s-1eant2M" />
 
         <activity
+            android:exported="true"
             android:name=".LoginActivity"
 
             android:label="@string/title_activity_maps">

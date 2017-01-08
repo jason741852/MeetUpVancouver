@@ -199,7 +199,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 signOut();
                 break;
             case R.id.create_event_button:
-                Intent event = new Intent(LoginActivity.this, CalendarActivity.class);
+                // User CalendarActivity to test if the event is added to personal calendar
+                Intent event = new Intent(LoginActivity.this, EventDetails.class);
                 startActivity(event);
                 break;
         }

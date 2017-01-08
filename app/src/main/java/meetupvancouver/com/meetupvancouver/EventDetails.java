@@ -1,6 +1,8 @@
 package meetupvancouver.com.meetupvancouver;
 
+import android.content.Intent;
 import android.os.Debug;
+import android.provider.CalendarContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +17,9 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Calendar;
+
 
 public class EventDetails extends AppCompatActivity {
 
@@ -46,7 +51,6 @@ public class EventDetails extends AppCompatActivity {
         Time = (EditText) findViewById(R.id.Time);
         Date = (EditText) findViewById(R.id.Date);
         submitbutton = (Button) findViewById(R.id.button2);
-
 
         Firebase.setAndroidContext(this);
 
@@ -92,12 +96,35 @@ public class EventDetails extends AppCompatActivity {
 //
 //                        }
 //                    });
-
+//                    Intent i  = new Intent(EventDetails.this, CalendarActivity.class);
+//                    startActivity(i);
 				}
+
+
 			});
 
 
 
 
-		}
+
+    }
+    public void onAddEventClicked(View view){
+        Intent intent = new Intent(Intent.ACTION_INSERT);
+        intent.setType("vnd.android.cursor.item/event");
+
+        Calendar cal = Calendar.getInstance();
+//        long startTime = cal.getTimeInMillis();
+//        long endTime = cal.getTimeInMillis()  + 60 * 60 * 1000;
+//
+//        intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startTime);
+//        intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,endTime);
+//        intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
+
+        intent.putExtra(CalendarContract.Events.TITLE, EventName.getText().toString());
+        intent.putExtra(CalendarContract.Events.DESCRIPTION,  EventDescription.getText().toString());
+        intent.putExtra(CalendarContract.Events.EVENT_LOCATION, Location.getText().toString());
+//        intent.putExtra(CalendarContract.Events.RRULE, "FREQ=YEARLY");
+
+        startActivity(intent);
+    }
 }
