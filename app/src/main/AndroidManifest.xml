@@ -33,6 +33,7 @@
 
         <activity
             android:name=".LoginActivity"
+
             android:label="@string/title_activity_maps">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,7 +44,7 @@
         <activity android:name=".CalendarActivity" />
         <activity android:name=".MapsActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name="UserAreaActivity" />
+        <activity android:name=".UserAreaActivity" />
         <activity android:name=".EventDetails" />
     </application>
 
