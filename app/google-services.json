@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "494330823077-u4mhdif7eab801qdu3dqaepf0h36qb8j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "meetupvancouver.com.meetupvancouver",
+            "certificate_hash": "63C9F56745E6FFD7FB9B2B522FB5A15F6F68B735"
+          }
+        },
+        {
           "client_id": "494330823077-1rd49195t7vji8e6shc06jrnp8vgig8u.apps.googleusercontent.com",
           "client_type": 3
         },
