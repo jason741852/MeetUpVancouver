@@ -36,11 +36,32 @@
         android:inputType="textPersonName"
         android:text="Event Name"
         android:ems="10"
+        android:id="@+id/EventName"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:id="@+id/editText2" />
+        android:layout_alignEnd="@+id/button3"
+        android:layout_marginTop="14dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPostalAddress"
+        android:ems="10"
+        android:id="@+id/Location"
+        android:text="Location"
+        android:layout_above="@+id/button2"
+        android:layout_alignStart="@+id/button2"
+        android:layout_marginBottom="58dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/EventDescription"
+        android:text="Event Description"
+        android:layout_below="@+id/EventName"
+        android:layout_alignStart="@+id/Date"
+        android:layout_marginTop="26dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -48,59 +69,30 @@
         android:inputType="textPersonName"
         android:text="Host Name"
         android:ems="10"
-        android:id="@+id/editText12"
-        android:layout_below="@+id/editText2"
-        android:layout_alignStart="@+id/editText2" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:ems="10"
-        android:id="@+id/editText9"
-        android:layout_below="@+id/editText12"
-        android:layout_alignStart="@+id/editText12" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:layout_below="@+id/editText9"
-        android:layout_alignStart="@+id/editText9"
-        android:id="@+id/editText15"
-        android:text="Event Description"
-        android:layout_alignParentEnd="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="time"
-        android:ems="10"
-        android:layout_below="@+id/editText15"
-        android:layout_alignStart="@+id/editText15"
-        android:id="@+id/editText16"
-        android:text="Time" />
+        android:id="@+id/HostName"
+        android:layout_below="@+id/Time"
+        android:layout_alignEnd="@+id/button3" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="date"
         android:ems="10"
-        android:layout_below="@+id/editText16"
-        android:layout_alignStart="@+id/editText16"
-        android:id="@+id/editText17"
-        android:text="Date" />
+        android:id="@+id/Date"
+        android:text="Date"
+        android:layout_below="@+id/EventDescription"
+        android:layout_alignStart="@+id/Location"
+        android:layout_marginTop="24dp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPostalAddress"
+        android:inputType="time"
         android:ems="10"
-        android:layout_below="@+id/editText17"
-        android:layout_alignEnd="@+id/editText17"
-        android:id="@+id/editText18"
-        android:text="Location" />
+        android:id="@+id/Time"
+        android:text="Time"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/Date" />
+
 
 </RelativeLayout>
