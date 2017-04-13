@@ -1,11 +1,31 @@
-MeetUpVancouver - An Android mobile app we developed for SFU "Google API Challenge" 24 Hour Hackathon
 
-Created by Jason Soliman, Davorin Doung, Carlson Chan, Owen Kwok and Jason Chan, MeetUpVancouver is a mobile app that bring strangers together. User can host public events in the interactive map and save the details on Google Calendar.
-Other user can see what events are being held around them in Vancouver, and if they choose to participate, they can save the event to Google Calendar.
+# MeetUpVancouver 
+An Android mobile application that brings strangers together. This was developed for SFU's "Google API Challenge" 24 hour hackathon. Langauages used are XML and Java.
 
-Google Services including Map, Calendar and Firebase are used to develop this application. Langauages used are XML and Java.
+## Authors 
 
-![alt tag](screenshot.png)  ![alt tag](screenshot2.png)
+Jason Soliman, Davorin Doung, Carlson Chan, Owen Kwok and Jason Chan
+
+## Features
+Users can host a public event in the interactive google map, and save their own events to their Google Calendar. 
+Other users can log-in and view public events created in Vancouver, and save to their Google Calendar if they choose to participate. 
+
+
+## Google integration
+
+Google Services including Map, Calendar and Firebase are used to develop this application. 
+
+## Deployment 
+Languages used are XML and Java, deployed using Android Studio. 
+
+## Screenshots
+
+* Login Screen: 
+
+  ![alt tag](screenshot.png)  
+* Map Screen with events visible:  
+
+  ![alt tag](screenshot2.png)
 
 
 
