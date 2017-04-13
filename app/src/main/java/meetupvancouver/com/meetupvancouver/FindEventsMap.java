@@ -51,11 +51,13 @@ public class FindEventsMap extends AppCompatActivity implements OnMapReadyCallba
     Long EventCounter;
     Double[] tempLoc;
     String[] tempInfo;
+    String[] tempEventTitle;
     Event e;
     String locationLat;
     String locationLon;
     GoogleMap mMap;
     LatLng tempLocation;
+    int jjj = 0;
 
 
     @Override
@@ -90,6 +92,7 @@ public class FindEventsMap extends AppCompatActivity implements OnMapReadyCallba
 
                 tempLoc = new Double[2*EventCounter.intValue()];
                 tempInfo = new String[EventCounter.intValue()];
+                tempEventTitle = new String[EventCounter.intValue()];
                 Log.d("location",String.valueOf(tempLoc.length));
                 Integer i = 0;
                 Integer j = 0;
@@ -97,8 +100,7 @@ public class FindEventsMap extends AppCompatActivity implements OnMapReadyCallba
                     e = event.getValue(Event.class);
                     locationLat = e.getLocationLat();
                     locationLon = e.getLocationLon();
-                    //tempLocation = new LatLng(Double.parseDouble(locationLat),Double.parseDouble(locationLon));
-//                    mMap.addMarker(new MarkerOptions().position(new LatLng(Double.parseDouble(locationLat),Double.parseDouble(locationLon))));
+                    tempEventTitle[j] = e.getEventName();
                     tempInfo[j] = e.toString();
                     j++;
                     tempLoc[i] = Double.parseDouble(locationLat);
@@ -116,9 +118,9 @@ public class FindEventsMap extends AppCompatActivity implements OnMapReadyCallba
 
                     map.addMarker(new MarkerOptions()
                             .position(new LatLng(tempLoc[ii], tempLoc[++ii]))
-                            .title(tempInfo[jj]));
+                            .title(tempEventTitle[jj]));
                     Log.d("lng",tempLoc[ii].toString());
-                    Log.d("title",tempInfo[jj]);
+                    Log.d("title",tempEventTitle[jj]);
 
 
                 }
@@ -128,12 +130,13 @@ public class FindEventsMap extends AppCompatActivity implements OnMapReadyCallba
                     @Override
                     public boolean onMarkerClick(Marker marker) {
                         Intent i = new Intent(FindEventsMap.this, ShowEvent.class);
-                        i.putExtra("info",marker.getTitle());
+                        i.putExtra("info",tempInfo[jjj]);
                         startActivity(i);
 
                         return false;
                     }
                 });
+                jjj++;
             }
 
             @Override

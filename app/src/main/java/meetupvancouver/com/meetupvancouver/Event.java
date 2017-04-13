@@ -14,6 +14,8 @@ public class Event {
     String LocationLon;
     String Time;
 
+    public String getEventName() { return EventName; }
+
     public String getLocationLat(){
         return LocationLat;
     }
